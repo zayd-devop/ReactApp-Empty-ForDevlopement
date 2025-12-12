@@ -5,6 +5,49 @@
 <script src="https://unpkg.com/react-dom@16/umd/reactdom.development.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+<script>
+  // 1)	Donnez le résultat des instructions suivantes :
+const numbers = [0, 1, 2, 3, 4, 5]
+console.log(numbers.slice(2))  
+console.log(numbers.slice(2, 4))  
+console.log(numbers.slice(1, 5))  
+console.log(numbers.slice(-2))  
+// 2)	Donnez le résultat des instructions suivantes :
+const numbers2 = [1, 2, 5, 4, 7]
+numbers2.splice(2, 1) 
+console.log(numbers2) 
+numbers2.splice(0, 0, 0) 
+console.log(numbers2) 
+numbers2.splice(3, 0, 3)
+console.log(numbers2) 
+numbers2.splice(5, 0, 5, 6)
+console.log(numbers2) 
+// 3)	Fusionnez deux tableaux dans le tableau panier, en utilisant l'opérateur de propagation. Imprimez les valeurs du nouveau tableau sur la console.
+let fruits = ['apricots', 'avocado','lemon'];
+let vegetables = ['artichokes', 'asparagus', 'garlic'];
+
+const one = [...fruits, ...vegetables];
+console.log(one);
+// 4)	 Créez un nouveau tableau contenant les noms de tous les mois de l'année à l'aide de l'opérateur de propagation et imprimez les valeurs du tableau sur la console. Ajoutez manuellement les mois manquants.
+
+let winter = ['December', 'January'];
+let spring1 = ['March','April','May'];
+let spring2 = ['August','September'];
+
+const season = [...winter, 'February', ...spring1, ...spring2, 'October', 'November'];
+console.log(season);
+// 5)	Fusionner des objets, puis ajouter à la quantité littérale d'objet reçue avec la valeur 2. Imprimer le résultat sur la console.
+let obj1 = {type: 'Car'};
+let obj2 = {colour: 'White'};
+
+const Fusionner = {...obj1, ...obj2, quatity : 2}
+console.log(Fusionner);
+// 6)	Convertir une chaîne de caractère en tableau : 
+const helloWorld = 'Hello world!'
+
+const helloTable = [...helloWorld];
+console.log(helloTable); 
+</script>
   <body>
   <div id="root"></div>
   </body>
