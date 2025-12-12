@@ -5,6 +5,87 @@
 <script src="https://unpkg.com/react-dom@16/umd/reactdom.development.js" crossorigin></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+<script>
+  //Exercice 1:
+// Soit le tableau suivant :
+ const input = [1, 2, 3, 4, 5]
+// Utiliser la méthode map pour créer un tableau contenant le carré des éléments de 
+// nums 
+const carre = input.map(nb => nb*nb)
+console.log(carre);
+
+// Exercice 2 :
+// Soit le tableau suivant :
+const personnes = [
+{ nom: "Rami", age: 33, estMember: true },
+{ nom: "Fatihi", age: 24, estMember: false },
+{ nom: "Chakib", age: 45, estMember: true },
+{ nom: "Mounir", age: 37, estMember: false },
+];
+
+// En utilisant les méthodes map et filter, créer un Array nomAgés à partir de l’Array personnes contenant les noms des personnes qui sont membre c-à-d estMember est true et l’age supérieur à 35.
+const nomAges = personnes.filter(person=> person.estMember ==true && person.age > 35).map(person => person.nom);
+console.log(nomAges);
+
+
+// Exercice 3 :
+// Soit le tableau suivant : 
+const input1 = [1, -2, 3, 4, -5]
+// 1.	Utiliser la méthode filter pour créer un tableau contenant les éléments positifs de nums 
+const positifs = input1.filter(num => num > 0);
+console.log(positifs);
+// 2.	Utiliser la méthode reduce pour calculer la somme des éléments de nums 
+const somme = input1.reduce((total,number) => total += number ,0);
+console.log(somme);
+// 3.	Utiliser la méthode filter et reduce pour calculer la somme des éléments positifs de nums 
+const Spositifs = input1.filter(num => num > 0).reduce((total,number) => total += number ,0);
+console.log(Spositifs);
+
+// Exercice 4 : 
+// Soit
+let livres=[{id :10,titre : 'POO',auteur :'RAMI',prix :300},
+{id :11,titre : 'JS ES6',auteur :'FAMI',prix :230},
+{id :12,titre : 'Algorithme',auteur :'KARIMI',prix :330},
+{id :13,titre : 'HTML & CSS',auteur :'RAMI',prix :340}]
+// 1. Créer la liste titres contenant tous les titres à partir de Livres utiliser map
+const titres = livres.map(livre => livre.titre);
+console.log(titres);
+// 2. Créer la liste titres contenant tous les livres de l’auteur ‘RAMI’ à partir de Livres filter
+const titresRami = livres.filter(livre => livre.auteur == 'RAMI').map(livre => livre.titre);
+console.log(titresRami);
+// 3. Chercher le livre dont le id égal à 12 utiliser find
+const livreID = livres.find(livre => livre.id == 12);
+console.log(livreID);
+// 4. Calculer le total des prix utiliser reduce
+const sommePrix = livres.reduce((total,livre) => total += livre.prix,0);
+console.log(sommePrix);
+// 5. Créer un Array mesLivres copie de livre
+const mesLivres = [...livres];
+
+// Exercice 5: Pures fonctions et Arrays 
+// Soit l’Array :
+const inscriptions=[
+{id:10,nom:'Rami',filiere:'DEV'},
+{id:11,nom:'Kamali',filiere:'DEV'},
+{id:12,nom:'Fahmi',filiere:'DEV'},
+{id:13,nom:'Chaouki',filiere:'DEV'}
+];
+// Créer la pure fonction qui permet d’ajouter une inscription
+// La fonction pure
+const ajouterInscription = (inscriptions, nouvelleInscription) => {
+    // On retourne un NOUVEAU tableau composé de l'ancien contenu (...) + le nouveau
+    return [...inscriptions, nouvelleInscription];
+};
+// --- Test de la fonction ---
+const nouveauStagiaire = { id: 14, nom: 'Alami', filiere: 'DEV' };
+// Création du nouveau tableau mis à jour
+const nouvellesInscriptions = ajouterInscription(inscriptions, nouveauStagiaire);
+// Vérifications
+console.log("Tableau original :", inscriptions.length); 
+console.log("Nouveau tableau :", nouvellesInscriptions.length);    
+console.log(nouvellesInscriptions);
+
+</script>
   <body>
   <div id="root"></div>
   </body>
