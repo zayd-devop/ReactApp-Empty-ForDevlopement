@@ -1,4 +1,4 @@
-
+const recipe = []
 function App() {
   return (
     <div className="App">
