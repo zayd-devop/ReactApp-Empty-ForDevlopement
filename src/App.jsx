@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddEvent from "./components/AddEvent";
 import EventItem from "./components/EventItem";
 import Header from "./components/Header";
-import './App.css'; // Importation du fichier de style
+import './App.css';
 
 function App() {
   const [evenements, setEvenements] = useState([
@@ -19,7 +19,6 @@ function App() {
     <React.StrictMode>
       <Header />
       <div className="App">
-        {/* Menu de navigation avec classes */}
         <nav className="nav-menu">
           <button className="btn-nav" onClick={() => setPage('Tous les evenements')}>
             Tous les events
@@ -28,15 +27,12 @@ function App() {
             Add Event
           </button>
         </nav>
-
-        {/* Zone de contenu avec classes */}
         <div className="content-container">
           {page === 'Tous les evenements' && (
             <div className="events-grid">
               <EventItem list={evenements} onDelete={supprimer} />
             </div>
           )}
-
           {page === 'Ajouter Evenement' && (
             <div className="form-wrapper">
               <AddEvent onAdd={ajouter} />
