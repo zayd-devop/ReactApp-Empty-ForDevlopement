@@ -1,10 +1,16 @@
+import { Routes,Route, BrowserRouter } from "react-router-dom"
+import Articles from "./containers/Articles"
+import UpdateArticle from "./components/UpdateArticle"
 
-function App() {
+const App=()=>{
   return (
-<div className="App">
-  <App />
-</div>
-  );
-}
+<BrowserRouter>
+   <Routes>
+      <Route path="/" element={<Articles/>}></Route>
+      <Route path="/update/:id" element={<UpdateArticle/>}></Route>
 
-export default App;
+   </Routes>
+   </BrowserRouter>
+  )
+}
+export default App
