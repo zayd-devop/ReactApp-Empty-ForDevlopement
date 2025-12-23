@@ -38,6 +38,9 @@ export default function reducer1(state=initialState,action) {
 switch(action.type) {
     case 'Update_Qte' :
         return{...state,produits:state.produits.map(p=>(p.id !== action.id)?p:{...p,stock:p.stock-action.qte_cmd})}
+    case 'Update_Qte' :
+        return{...state,produits:state.produits.map(p=>(p.id !== action.id)?p:{...p,stock:p.stock-action.qte_cmd})}
+
     default : return state;
 }
 }
