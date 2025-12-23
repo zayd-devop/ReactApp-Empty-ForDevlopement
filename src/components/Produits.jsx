@@ -5,24 +5,24 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom'
 export default function Produits (){
     //pour afficher la liste 
-    const Produits = useSelector(data=>data.r_produits.produit)
-    const  [qte,setQte] = useState(0);
+const produits = useSelector(data => data.r_produits.produits || []);    const  [qte,setQte] = useState(0);
     const dispatch=useDispatch();
     const[qteTotal,setQteTotal] = useState(0);
     const [prixTotal,setPrixTotal] = useState(0);
 
     function ajouter(id,price){
-        dispatch(Add_Panier(id,qte))
-        dispatch(Update_Qte(id,qte))
-        setQteTotal(qteTotal+qte)
-        setPrixTotal(prixTotal+(price*qte))
+        const quantiteValide = Number(qte) || 1;
+        dispatch(Add_Panier(id,quantiteValide))
+        dispatch(Update_Qte(id,quantiteValide))
+        setQteTotal(qteTotal+quantiteValide)
+        setPrixTotal(prixTotal+(price*quantiteValide))
     }
     return (
         <div>
             <h1>Liste des produits</h1>
             <table>
             {
-                Produits.map(p=>
+                produits.map(p=>
                     <tr key={p.id}>
                         <td>{p.title}-  {p.price} - {p.stock}</td>
                         <td><img src={p.image}width={60} height={40} alt="" /></td>
