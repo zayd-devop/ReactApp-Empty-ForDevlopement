@@ -1,18 +1,19 @@
 //etape 5 : creation de routage
+import Article from './components/Article';
 import {BrowserRouter, Routes,Route} from 'react-router-dom'
-import UserList from './components/UserList';
-import AddUser from './components/AddUser';
-import UpdateUser from './components/UpdateUser';
+import Articles from './components/Articles';
+import AddArticle from './components/AddArticles';
+import UpdatePost from './components/UpdatePost';
+
 function App() {
   return (
 <div className="App">
-  <h1>REDUX CRUD APP</h1>
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<UserList/>} />
-      <Route path='/add-user' element={<AddUser/>} />
-      <Route path='/update/:id' element={<UpdateUser/>} />
+      <Route path='/' element={<Articles />} />
+      <Route path='/update/:id' element={<UpdatePost />} />
     </Routes>
+
   </BrowserRouter>
 </div>
   );

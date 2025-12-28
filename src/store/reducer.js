@@ -1,26 +1,29 @@
-//Etape 2 : Creation reducer.js
+// //Etape 2 : Creation reducer.js
 
-const initialState = {users:[
-    {id:1, name:'Zaid', email:'zaid@email.com'},
-    {id:2, name: 'Oussama', email: 'oussama@email.com'}
-]};
 
-const reducer =(state=initialState,action) => {
-
+const initialState = { articles: [
+{ id: 1, title: "post 1", body: "Quisque cursus, metus vitae pharetra" },
+{ id: 2, title: "post 2", body: "Quisque cursus, metus vitae pharetra" },
+],
+}
+const reducer = (state=initialState,action) => {
     switch(action.type) {
-        case 'Add_user' :
-            return {...state, users:[...state.users, action.payload]}
-        case 'Update_user':
-            //recuperation l'element
-            const user = state.users.find((u)=> u.id === parseInt(action.payload.id))
-            if (user) {
-                user.name = action.payload.name
-                user.email = action.payload.email
+        case 'Add_post' :
+            return {...state,articles:[...state.articles,action.payload]};
+        case 'Delete_post':
+            return {...state, articles:[...state.articles.filter((a)=> a.id !== parseInt(action.payload))]}
+        case 'Update_post':
+            const article = state.articles.find((a)=> a.id === parseInt(action.payload.id))
+            if (article) {
+                article.title = action.payload.title
+                article.body = action.payload.body
             }
-
-        case 'Delete_user' :
-            return {...state, users:[...state.users.filter((u)=> u.id !== parseInt(action.payload))]}
     default :return state;
-        }
+    
+    }
+
 }
 export default reducer;
+
+
+
