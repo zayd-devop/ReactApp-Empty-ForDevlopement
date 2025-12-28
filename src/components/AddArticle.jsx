@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
-import {addPost} from "../store/actions"
+import {addArticle} from "../store/actions"
 
 export default function AddArticle()
 {
@@ -11,7 +11,7 @@ export default function AddArticle()
    {
       e.preventDefault();
       console.log(title)
-      dispatch(addPost({title:title,body:body}))
+      dispatch(addArticle({title:title,body:body}))
    }
    return(
       <form onSubmit={ajouter}>

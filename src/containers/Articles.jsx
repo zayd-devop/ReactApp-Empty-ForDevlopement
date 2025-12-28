@@ -4,7 +4,8 @@ import Article from "../components/Article";
 
 export default function Articles()
 {
-const articles = useSelector((state) => state.articles);   return(
+   const articles=useSelector(state=>state.postR.articles);
+   return(
       <div>
          <AddArticle/>
       {
