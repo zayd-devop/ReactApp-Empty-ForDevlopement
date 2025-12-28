@@ -1,10 +1,15 @@
+import { Routes,Route } from "react-router-dom"
+import Articles from "./Articles"
+import UpdateArticle from "../components/UpdateArticle"
 
-function App() {
+const App=()=>{
   return (
-<div className="App">
-  <App />
-</div>
-  );
-}
 
-export default App;
+   <Routes>
+      <Route path="/" element={<Articles/>}></Route>
+      <Route path="/update/:id" element={<UpdateArticle/>}></Route>
+
+   </Routes>
+  )
+}
+export default App
