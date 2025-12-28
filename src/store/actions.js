@@ -1,20 +1,41 @@
 //Etape 1 : Creation des actions.js 
 //3 actions : ajouter/modifier/supprimer
-// export const addPostAction =(user)=> {
-//     return {type:'Add_post',payload:user}
-// }
-// export const updateUserAction =(NewUser)=> {
-//     return {type:'Update_user',payload:NewUser}
-// }
-// export const deleteUserAction =(id)=> {
-//     return {type:'Delete_user',payload :id}
-// }
-export const addPostAction =(article)=> {
-    return {type:'Add_post',payload:article}
+import axios from "axios";
+
+export const loadUsers =(users)=> {
+    return {type:'LOAD_USERS',payload:users}
 }
-export const updatePostAction =(NewArticles)=> {
-    return {type:'Update_post',payload:NewArticles}
+export const addUser = (user) => {
+    return {type: 'ADD_USER',payload: user};
 }
-export const deletePostAction =(id)=> {
-    return {type:'Delete_post',payload :id}
+export const updateUser =(user)=> {
+    return {type:'UPDATE_USER',payload:user}
 }
+export const deleteUser =(id)=> {
+    return {type:'DELETE_USER',payload :id}
+}
+
+//pour charger l'API
+export const fetchUsers = () => {
+    return (dispatch) => {
+        axios.get('https://jsonplaceholder.typicode.com/users')
+            .then(response => {                
+                dispatch({
+                    type: 'LOAD_USERS',
+                    payload: response.data
+                });
+                
+            })            
+    };
+};
+export const fetchUserPosts = (userId) => {
+    return (dispatch) => {
+        axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+            .then(response => {
+                dispatch({
+                    type: 'LOAD_USER_POSTS',
+                    payload: response.data
+                });
+            })
+    };
+};

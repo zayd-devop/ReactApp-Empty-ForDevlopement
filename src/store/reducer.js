@@ -1,23 +1,22 @@
 // //Etape 2 : Creation reducer.js
 
 
-const initialState = { articles: [
-{ id: 1, title: "post 1", body: "Quisque cursus, metus vitae pharetra" },
-{ id: 2, title: "post 2", body: "Quisque cursus, metus vitae pharetra" },
-],
+const initialState = { users: [],activeUserPosts: []
 }
 const reducer = (state=initialState,action) => {
     switch(action.type) {
-        case 'Add_post' :
-            return {...state,articles:[...state.articles,action.payload]};
-        case 'Delete_post':
-            return {...state, articles:[...state.articles.filter((a)=> a.id !== parseInt(action.payload))]}
-        case 'Update_post':
-            const article = state.articles.find((a)=> a.id === parseInt(action.payload.id))
-            if (article) {
-                article.title = action.payload.title
-                article.body = action.payload.body
+        case 'LOAD_USERS' :
+            return { ...state, users: action.payload };       
+        case 'ADD_USER' :
+            return {...state,users:[...state.users,action.payload]};
+        case 'DELETE_USER':
+            return {...state, users:[...state.users.filter((u)=> u.id !== parseInt(action.payload))]}
+        case 'UPDATE_USER':
+            return {
+                ...state,users: state.users.map((user) => user.id === parseInt(action.payload.id) ? action.payload : user )
             }
+        case 'LOAD_USER_POSTS':
+            return { ...state, activeUserPosts: action.payload };
     default :return state;
     
     }
