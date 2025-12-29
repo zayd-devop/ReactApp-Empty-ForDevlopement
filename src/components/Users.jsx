@@ -54,7 +54,7 @@ export default function Users() {
                                 <div>
                                     <h3>Posts de {user.name} :</h3>
                                     {posts.length === 0 ? (
-                                        <p>Chargement...</p>
+                                        <p>Pas de donnes pour cet user</p>
                                     ) : (
                                         <ul>
                                             {posts.map((post) => (
