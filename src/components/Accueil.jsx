@@ -16,7 +16,7 @@ const Accueil = () => {
   return (
     <div>
       <div>
-        Bienvenue, {user?.nom} {user?.prenom} !
+        Bienvenue, {user.nom} {user.prenom} !
       </div>
       
       <nav>

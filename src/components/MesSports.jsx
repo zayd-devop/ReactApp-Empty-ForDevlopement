@@ -11,7 +11,6 @@ const MesSports = () => {
 
   const [newSport, setNewSport] = useState({ nomSport: '', niveau: '' });
   
-  // State pour gérer les modifications de niveau par ligne
   const [editValues, setEditValues] = useState({});
 
   if (!user) return <p>Veuillez vous connecter.</p>;
@@ -24,7 +23,6 @@ const MesSports = () => {
   };
 
   const handleUpdate = (id, originalNiveau) => {
-    // On prend la nouvelle valeur, sinon on garde l'ancienne
     const niveauToUpdate = editValues[id] !== undefined ? editValues[id] : originalNiveau;
     dispatch(updateNiveau({ id, niveau: niveauToUpdate }));
     alert("Niveau modifié !");
