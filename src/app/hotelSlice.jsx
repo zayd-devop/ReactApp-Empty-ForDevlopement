@@ -30,7 +30,7 @@ const hotelSlice = createSlice({
     deleteReservation: (state, action) => {
       state.reservations = state.reservations.filter(res => res.id_res !== action.payload);
     },
-    // etape 6: action pour connecter et deconnecter utilisateur
+    // etape 6: actions pour connecter et deconnecter utilisateur
     loginUser :(state,action) => {
       state.userConnected = action.payload
     },
@@ -41,5 +41,5 @@ const hotelSlice = createSlice({
   }
 });
 
-export const { addReservation, deleteReservation } = hotelSlice.actions;
+export const { addReservation, deleteReservation,loginUser,logoutUser } = hotelSlice.actions;
 export default hotelSlice.reducer;
