@@ -1,4 +1,7 @@
+//store qui permet de gerer l'etat globale de l'application
+//Etape 3 : creation des actions
 import { createSlice } from '@reduxjs/toolkit';
+
 
 const initialState = {
   chambres: [
@@ -12,7 +15,9 @@ const initialState = {
     { id: 2, nom: "Jane Smith", login: "jane_smith", password: "qwerty456" },
     { id: 3, nom: "Alice Johnson", login: "alice_johnson", password: "letmein789" }
   ],
-  reservations: []
+  reservations: [],
+  //etape 6 : ajout variable de connexion
+  userConnected : null
 };
 
 const hotelSlice = createSlice({
@@ -24,7 +29,15 @@ const hotelSlice = createSlice({
     },
     deleteReservation: (state, action) => {
       state.reservations = state.reservations.filter(res => res.id_res !== action.payload);
+    },
+    // etape 6: action pour connecter et deconnecter utilisateur
+    loginUser :(state,action) => {
+      state.userConnected = action.payload
+    },
+    logoutUser : (state) => {
+      state.userConnected = null
     }
+    //
   }
 });
 
