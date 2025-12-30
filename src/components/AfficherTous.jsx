@@ -3,27 +3,27 @@
 //delete ici
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { deletePostAction } from "../store/actions"
-import AddArticle from "./AddArticles"
+import { action concernes } from "../store/actions"
+import AddComponent from "./AddArticles"
 
-export default function Articles() {
-    const articles = useSelector(data=>data.articles)
+export default function AfficherTous() {
+    const articles = useSelector(data=>data.table)
     const dispatch =useDispatch()
     const handleDelete =(id) => {
-        dispatch(deletePostAction(id))
+        dispatch(deleteAction(id))
     }
     return (
         <div>
             <AddArticle></AddArticle>
 
             {
-                articles.map((article,index)=> {
+                table.map((t,index)=> {
                     return (
                         <div key={index}>
-                            <h1>{article.title}</h1>
-                            <p>{article.body}</p>
-                            <button onClick={()=>handleDelete(article.id)}>Supprimer</button>
-                            <Link to={`/update/${article.id}`}>
+                            <h1>{t.title}</h1>
+                            <p>{t.body}</p>
+                            <button onClick={()=>handleDelete(t.id)}>Supprimer</button>
+                            <Link to={`/update/${t.id}`}>
                             <button >Update</button>
                             </Link>
                             <button>Details</button>
