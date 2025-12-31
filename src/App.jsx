@@ -1,10 +1,7 @@
-
-function App() {
-  return (
-<div className="App">
-  <App />
-</div>
-  );
+import React from "react";
+import Afficher from "./Afficher";
+export default function App(){
+    return(
+        <Afficher/>
+    )
 }
-
-export default App;
