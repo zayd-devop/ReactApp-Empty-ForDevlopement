@@ -1,7 +1,15 @@
 import React from "react";
-import Afficher from "./Afficher";
+import { Routes,Route } from "react-router-dom";
+import AjouterRecettes from "./components/AjouterRecettes";
+import AfficherRecettes from "./components/AfficherRecettes";
+import Menu from "./components/Menu";
+
 export default function App(){
     return(
-        <Afficher/>
+      <Routes>
+        <Route path="/" element={<Menu/>}/>
+        <Route path='/ajouter-recettes' element={<AjouterRecettes/>}/>
+        <Route path='/afficher-recettes' element={<AfficherRecettes />} />
+      </Routes>
     )
 }
