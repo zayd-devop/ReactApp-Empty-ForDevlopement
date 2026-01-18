@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../store/actions3";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom"; // Ajout de Link
+import '../App.css'; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -11,6 +11,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const users = useSelector(state => state.r_auth.users);
+  
   const handleLogin = (e) => {
     e.preventDefault();
     const utilisateurTrouve = users.find(u => u.email === email && u.password === password);
@@ -18,7 +19,7 @@ export default function Login() {
         dispatch(loginUser(utilisateurTrouve));
         navigate("/"); 
     } else {
-        alert("Email ou mot de passe incorrect ");
+        alert("Email ou mot de passe incorrect");
     }
   };
 
@@ -26,16 +27,34 @@ export default function Login() {
     <div className="auth-container">
       <h2>Connexion</h2>
       <form onSubmit={handleLogin}>
-        <div>
-            <label>Email:</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <div className="form-group">
+            <label>Email</label>
+            <input 
+                type="email" 
+                placeholder="exemple@email.com"
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                required
+            />
         </div>
-        <div>
-            <label>Mot de passe:</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className="form-group">
+            <label>Mot de passe</label>
+            <input 
+                type="password" 
+                placeholder="Votre mot de passe"
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required
+            />
         </div>
-        <button type="submit">Se connecter</button>
+        <button type="submit" className="btn-submit">Se connecter</button>
       </form>
+      
+      {/* Lien vers l'inscription */}
+      <div className="auth-switch">
+          Pas encore de compte ? 
+          <Link to="/register">S'inscrire ici</Link>
+      </div>
     </div>
   );
 }

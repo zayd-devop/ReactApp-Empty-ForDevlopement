@@ -1,6 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../store/acttions3";
+// CORRECTION : "actions3" (un seul t)
+import { logoutUser } from "../store/actions3";
+import '../App.css'; // On importe le CSS
+
 export default function Navbar() {
   const panier = useSelector((state) => state.r_panier.panier);
   const { isAuth, user } = useSelector((state) => state.r_auth);
@@ -15,35 +18,43 @@ export default function Navbar() {
   };
 
   return (
-    <nav style={styles.nav}>
-      <div style={styles.logo}>
-        <Link to="/" style={styles.link}>MonShop</Link>
-      </div>
+    <nav className="navbar">
+      {/* --- LOGO ZAYD STORE --- */}
+      <Link to="/" className="brand-logo">
+        {/* Petite icône Z stylisée */}
+        <div className="logo-icon">Z</div> 
+        <div className="logo-text">
+          Zayd<span className="logo-accent">Store</span>
+        </div>
+      </Link>
       
-      <div style={styles.menu}>
-        <Link to="/" style={styles.link}>Produits</Link>
-        <Link to="/panier" style={styles.link}>
-          Panier ({totalItems})
+      <div className="nav-menu">
+        <Link to="/" className="nav-link">Produits</Link>
+        
+        {/* Lien Panier avec Badge */}
+        <Link to="/panier" className="nav-link cart-wrapper">
+          <span>🛒 Panier</span>
+          {totalItems > 0 && (
+            <span className="cart-badge">{totalItems}</span>
+          )}
         </Link>
         
+        {/* Section Auth */}
         {isAuth ? (
-          <>
-            <span style={{color: 'white', marginRight: '10px'}}>Bonjour, {user?.name}</span>
-            <button onClick={handleLogout} style={styles.btn}>Déconnexion</button>
-          </>
+          <div className="user-section">
+            <span className="user-name">Bonjour, {user?.name}</span>
+            <button onClick={handleLogout} className="btn-logout">
+              Déconnexion
+            </button>
+          </div>
         ) : (
-          <>
-            <Link to="/login" style={styles.link}>Login</Link>
-            <Link to="/register" style={styles.link}>S'inscrire</Link>
-          </>
+          <div className="user-section" style={{border: 'none'}}>
+             {/* J'ai transformé Login en bouton plus visible */}
+            <Link to="/login" className="nav-link" style={{marginRight: '15px'}}>Login</Link>
+            <Link to="/register" className="btn-login">S'inscrire</Link>
+          </div>
         )}
       </div>
     </nav>
   );
 }
-const styles = {
-  nav: { display: "flex", justifyContent: "space-between", background: "#333", padding: "1rem", alignItems: "center" },
-  link: { color: "white", textDecoration: "none", margin: "0 10px" },
-  logo: { fontSize: "1.5rem", fontWeight: "bold" },
-  btn: { background: "red", color: "white", border: "none", padding: "5px 10px", cursor: "pointer" }
-};

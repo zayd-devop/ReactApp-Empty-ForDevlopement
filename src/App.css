@@ -249,3 +249,223 @@ body {
   font-weight: 700;
   color: #1a1a2e;
 }
+/* --- NAVBAR & LOGO --- */
+
+.navbar {
+  background-color: #1a1a2e; /* Même bleu que tes boutons "Ajouter" */
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%; /* Marge responsive sur les côtés */
+  position: sticky; /* Reste collé en haut */
+  top: 0;
+  z-index: 1000; /* Passe au-dessus des produits */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Le Logo Zayd Store */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: #ff6b00;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.logo-accent {
+  color: #ff6b00; /* Touche d'orange sur le mot Store */
+}
+
+/* Liens du Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #ff6b00;
+}
+
+/* Badge Panier */
+.cart-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background-color: #ff6b00;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  border: 2px solid #1a1a2e; /* Bordure pour séparer du fond */
+}
+
+/* Zone Utilisateur */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-left: 1px solid rgba(255,255,255,0.2);
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.user-name {
+  color: white;
+  font-weight: 600;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid #ff4757;
+  color: #ff4757;
+  padding: 6px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  background: #ff4757;
+  color: white;
+}
+
+.btn-login {
+  background: #ff6b00;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-login:hover {
+  background: #e65100;
+}
+/* --- AUTHENTIFICATION (Login & Register) --- */
+
+.auth-container {
+  max-width: 400px;
+  margin: 60px auto; /* Centré verticalement et horizontalement */
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.auth-container h2 {
+  color: #1a1a2e;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Groupe de champs (Label + Input) */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #1a1a2e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #f1f5f9;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* Important pour ne pas casser la largeur */
+}
+
+/* Effet focus sur l'input (Bordure orange) */
+.form-group input:focus {
+  border-color: #ff6b00;
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+}
+
+/* Bouton de soumission */
+.btn-submit {
+  width: 100%;
+  background-color: #1a1a2e;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background-color: #ff6b00; /* Devient orange au survol */
+  transform: translateY(-2px);
+}
+
+/* Lien pour changer de page (Login <-> Register) */
+.auth-switch {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.auth-switch a {
+  color: #ff6b00;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
