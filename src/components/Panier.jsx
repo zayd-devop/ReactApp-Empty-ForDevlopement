@@ -1,17 +1,15 @@
-import { Add_Panier, Delete_Panier, Update_Panier } from '../store/actions2';
+import { Delete_Panier, Update_Panier } from '../store/actions2';
 import { Update_Qte } from '../store/actions1';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import '../App.css'; 
 
-export default function Produits() {
+export default function Panier() {
     const produits = useSelector(data => data.r_produits.produits || []);
     const panier = useSelector(data => data.r_panier.panier || []);
-
     const [qtes, setQtes] = useState([]);
     const dispatch = useDispatch();
-    
-    // Ideally, calculate these directly from 'panier' using useMemo/variables instead of state
-    // but keeping your logic for now:
+
     const [qteTotal, setQteTotal] = useState(panier.reduce((total, p) => total + parseInt(p.qte_cmd), 0));
     const [prixTotal, setPrixTotal] = useState(panier.reduce((total, p) => total + parseInt(p.qte_cmd) * (produits.find(prd => prd.id == p.id) || {}).price, 0));
 
@@ -22,74 +20,96 @@ export default function Produits() {
         setPrixTotal(prixTotal - (price * qte_cmd));
     }
 
-    function modifier(id, qte_cmd, price) {
-        // 1. Find the new quantity input
+    function modifier(id, qte_cmd, price, stockRestant) {
         const inputObj = qtes.find(q => q.id == id);
-
-        // 2. Safety Check: If user clicked modifier without typing anything
         if (!inputObj) {
             alert("Veuillez changer la quantité d'abord");
-            return; 
+            return;
         }
 
-        const qte = inputObj.qte; // This is safe now
+        const newQte = inputObj.qte;
+        const diff = newQte - qte_cmd;
 
-        dispatch(Update_Panier(id, qte));
-        dispatch(Update_Qte(id, qte - parseInt(qte_cmd)));
-        
-        const qte_diff = qte - qte_cmd;
-        setQteTotal(qteTotal + qte_diff);
-        setPrixTotal(prixTotal + (price * qte_diff));
+        if (diff > 0 && diff > stockRestant) {
+            alert(`Stock insuffisant ! Il reste ${stockRestant} pièces.`);
+            return;
+        }
+
+        dispatch(Update_Panier(id, newQte));
+        dispatch(Update_Qte(id, diff));
+
+        setQteTotal(qteTotal + diff);
+        setPrixTotal(prixTotal + (price * diff));
     }
 
-    // New helper to handle input changes cleanly without direct mutation
     const handleInputChange = (e, pid) => {
         const val = parseInt(e.target.value);
         setQtes(prevQtes => {
             const exists = prevQtes.find(q => q.id === pid);
-            if (exists) {
-                // Update existing item immutably
-                return prevQtes.map(q => q.id === pid ? { ...q, qte: val } : q);
-            } else {
-                // Add new item (FIXED TYPO HERE: 'qt' -> 'qte')
-                return [...prevQtes, { id: pid, qte: val }];
-            }
+            if (exists) return prevQtes.map(q => q.id === pid ? { ...q, qte: val } : q);
+            else return [...prevQtes, { id: pid, qte: val }];
         });
     }
 
     return (
-        <div>
-            <h1>Contenu de panier</h1>
-            <table>
-                <tbody>
+        <div className="cart-container">
+            <h1 style={{margin: '30px 0'}}>Mon Panier</h1>
+
+            {panier.length === 0 ? <p>Votre panier est vide.</p> : (
+                <div>
                     {panier.map(p => {
                         const prd = produits.find(pr => pr.id == p.id);
-                        // Safety check in case product is not found
-                        if (!prd) return null; 
-                        
+                        if (!prd) return null;
+
                         return (
-                            <tr key={p.id}>
-                                <td>{prd.title} - {prd.price} - {prd.stock}</td>
-                                <td><img src={prd.image} width={60} height={40} alt="" /></td>
-                                <td>
-                                    Qte :
-                                    <input 
-                                        type="number" 
-                                        onChange={(e) => handleInputChange(e, p.id)} 
+                            <div className="cart-item" key={p.id}>
+                                {/* Image à gauche */}
+                                <div className="cart-img-container">
+                                    <img src={prd.image} alt={prd.title} className="cart-img" />
+                                </div>
+
+                                {/* Infos au centre */}
+                                <div className="cart-info">
+                                    <h3 className="cart-title">{prd.title}</h3>
+                                    <div className="cart-price">{prd.price} DH</div>
+                                    <small style={{color: '#777'}}>Stock restant : {prd.stock}</small>
+                                </div>
+
+                                {/* Actions à droite */}
+                                <div className="cart-actions">
+                                    <input
+                                        type="number"
+                                        className="qty-input"
+                                        min="1"
+                                        max={p.qte_cmd + prd.stock}
+                                        onChange={(e) => handleInputChange(e, p.id)}
                                         defaultValue={p.qte_cmd}
                                     />
-                                </td>
-                                <td>
-                                    <button onClick={() => supprimer(p.id, p.qte_cmd, prd.price)}>Supprimer</button>
-                                    <button onClick={() => modifier(p.id, p.qte_cmd, prd.price)}>Modifier</button>
-                                </td>
-                            </tr>
+                                    <button 
+                                        className="cart-btn-mod"
+                                        onClick={() => modifier(p.id, p.qte_cmd, prd.price, prd.stock)}
+                                    >
+                                        Modifier
+                                    </button>
+                                    <button 
+                                        className="cart-btn-del"
+                                        onClick={() => supprimer(p.id, p.qte_cmd, prd.price)}
+                                    >
+                                        Supprimer
+                                    </button>
+                                </div>
+                            </div>
                         )
                     })}
-                </tbody>
-            </table>
-            <p>Qte : {qteTotal}</p>
-            <p>Prix Total : {prixTotal}</p>
+
+                    {/* Résumé en bas */}
+                    <div className="cart-summary">
+                        <h3>Total Articles : {qteTotal}</h3>
+                        <div className="total-price">Total : {prixTotal.toFixed(2)} DH</div>
+                        <button className="btn-add" style={{marginTop:'20px', width:'100%'}}>Passer la commande</button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
