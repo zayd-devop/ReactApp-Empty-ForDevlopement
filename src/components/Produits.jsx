@@ -2,13 +2,18 @@ import { Add_Panier } from '../store/actions2';
 import { Update_Qte } from '../store/actions1';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import '../App.css'; 
 
 export default function Produits() {
     const prods = useSelector(data => data.r_produits.produits || []);
+    const panier = useSelector(data => data.r_panier.panier || []);
     const [produits, setProduits] = useState(prods);
     const [qtes, setQtes] = useState([]);
     const dispatch = useDispatch();
+    useEffect(() => {
+        setProduits(prods);
+        }, [prods]);
     
     const [trie, setTrie] = useState(0);
     const [prix1, setPrix1] = useState("");
@@ -26,6 +31,8 @@ export default function Produits() {
     function ajouter(id, price, stock) {
         const item = qtes.find(q => q.id === id);
         const qte = item ? item.qte : 1;
+        const produitReel = prods.find(p => p.id === id);
+        const stockReel = produitReel ? produitReel.stock : 0;
         
         if (qte > 0 && qte <= stock) {
             dispatch(Add_Panier(id, qte));
