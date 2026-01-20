@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../store/actions3";
-import { useNavigate, Link } from "react-router-dom"; // Ajout de Link
+import { useNavigate, Link } from "react-router-dom"; 
 import '../App.css'; 
 
 export default function Login() {
@@ -50,8 +50,7 @@ export default function Login() {
         <button type="submit" className="btn-submit">Se connecter</button>
       </form>
       
-      {/* Lien vers l'inscription */}
-      <div className="auth-switch">
+\      <div className="auth-switch">
           Pas encore de compte ? 
           <Link to="/register">S'inscrire ici</Link>
       </div>
