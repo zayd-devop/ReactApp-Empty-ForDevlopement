@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-// CORRECTION : "actions3" (un seul t)
 import { logoutUser } from "../store/actions3";
 import '../App.css'; 
 

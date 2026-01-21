@@ -73,7 +73,6 @@ export default function Produits() {
             <div className="products-grid">
                 {produits.map(p => (
                     <div className="product-card" key={p.id}>
-                        <div className="fav-icon">♥</div>
                         <div className="image-container">
                             <img src={p.image} alt={p.title} className="product-img" />
                         </div>
@@ -115,7 +114,7 @@ export default function Produits() {
                             <button 
                                 className="btn-add"
                                 onClick={() => ajouter(p.id, p.price, p.stock)}
-                                disabled={p.stock === 0} //si pas de stock : disabled avec 2 conditions
+                                disabled={p.stock === 0} //si pas de stock : disabled et 2 conditions
                             >
                                 {p.stock === 0 ? 'Épuisé' : 'Ajouter au panier'}
                             </button>
