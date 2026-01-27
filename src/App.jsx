@@ -1,27 +1,21 @@
-import Produits from "./components/Produits";
-import Panier from "./components/Panier";
-import Login from "./components/Login";
-import Register from "./components/Register";
 import Navbar from "./components/Navbar"; // Import Navbar
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from "react-redux";
-
+import Accueil from "./components/Accueil";
+import Services from "./components/Services";
+import Contact from "./components/Contact";
+import About from "./components/About";
 function App() {
-const isAuth = useSelector(state => state.r_auth.isAuth);
   return (
     
     <div className="App">
       <Navbar /> 
-      
-      <div style={{ padding: "20px" }}>
         <Routes>
-          <Route path='/' element={isAuth?<Produits />:<Login/>}></Route>
-          <Route path='/panier' element={isAuth?<Panier />:<Login/>}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/register' element={<Register />}></Route>
+          <Route path='/accueil' element={<Accueil/>}></Route>
+          <Route path='/services' element={<Services/>}></Route>
+          <Route path='/about' element={<About/>}></Route>
+          <Route path='/contact' element={<Contact/>}></Route>
         </Routes>
       </div>
-    </div>
   );
 }
 
