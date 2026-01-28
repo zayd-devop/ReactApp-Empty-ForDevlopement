@@ -1,6 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css';
+import learLogo from '../assets/lear-logo-vector.png'
+import yazakiLogo from'../assets/yazaki.png'
+import coficabLogo from'../assets/coficab.png'
+import marelliLogo from '../assets/magneti.png'
+import acomeLogo from '../assets/acome.png'
+import erumLogo from '../assets/erum.png'
+import elastomerLogo from '../assets/elastomer.png'
+import brillasLogo from '../assets/brillas.png'
 
 export default function Accueil() {
   return (
@@ -75,17 +83,32 @@ export default function Accueil() {
             <Link to='/services'><button className='btn-red'>Voir tous nos services</button></Link>
         </div>
       </div>
-      <div className='section-container' style={{background: '#f9f9f9'}}>
+<div className='section-container' style={{background: '#f9f9f9'}}>
         <div className='section-title'>
             <h4>Ils nous font confiance</h4>
+            <p>Partenaires majeurs de l'industrie automobile et manufacturière.</p>
         </div>
-        <div className='references-grid'>
-          {['LEAR Corporation', 'Yazaki', 'Magneti Marelli', 'COFICAB', 'ACOME Group', 'ERUM', 'Elastomer', 'Brillas Agusti'].map((client, index) => (
-             <div key={index} className='ref-card'>
-               {client}
-             </div>
-          ))}
-        </div>
+        
+<div className='references-grid'>
+  {[
+    // 1. Votre logo local (Vérifiez bien qu'il est dans le dossier 'public')
+    { name: 'LEAR Corporation', logo: learLogo },
+    { name: 'Yazaki', logo: yazakiLogo },
+    { name: 'Marelli', logo: marelliLogo },
+    { name: 'COFICAB', logo: coficabLogo }, 
+    { name: 'ACOME Group', logo: acomeLogo },
+    { name: 'ERUM Group', logo: erumLogo },
+    { name: 'Elastomer Solutions', logo: elastomerLogo },
+    { name: 'Brillas Agusti', logo: brillasLogo }
+  ].map((client, index) => (
+      <div key={index} className='ref-card-logo'>
+        <img 
+          src={client.logo} 
+          alt={client.name} 
+        />
+      </div>
+  ))}
+</div>
       </div>
       <div className='section-container'>
         <div className='section-title'>

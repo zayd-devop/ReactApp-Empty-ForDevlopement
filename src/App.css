@@ -276,3 +276,171 @@ body {
   color: var(--dark-grey); /* En noir/gris pour le contraste, ou var(--primary-red) selon votre goût */
   text-transform: uppercase;
 }
+/* --- CLIENTS / REFERENCES --- */
+.references-grid {
+  display: grid;
+  /* Colonnes un peu plus larges pour de plus beaux logos */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 30px;
+}
+
+.ref-card-logo {
+  /* 1. Cartes plus grandes et plus modernes */
+  width: 180px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #ffffff;
+  /* Ombre douce permanente pour un effet "carte" propre */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 12px; /* Coins bien arrondis */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.ref-card-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* 2. ON ENLÈVE LE FILTRE GRIS ET L'OPACITÉ */
+  /* filter: grayscale(100%);  <- Supprimé */
+  /* opacity: 0.7;             <- Supprimé */
+  
+  /* On ajoute une légère ombre portée au logo lui-même pour le détacher du fond */
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+  transition: all 0.3s ease;
+}
+
+/* 3. Effet "Waouh" au survol */
+.ref-card-logo:hover {
+  /* La carte remonte et l'ombre s'agrandit pour un effet 3D */
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.ref-card-logo:hover img {
+  /* Le logo grossit légèrement pour attirer l'œil */
+  transform: scale(1.08);
+}
+/* --- FOOTER --- */
+
+.footer-container {
+  background-color: var(--dark-grey); /* Le fond noir (#1a1a1a) */
+  color: #e0e0e0;
+  padding-top: 60px;
+  margin-top: 50px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 5% 50px 5%;
+  gap: 40px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 280px; /* Pour que ça reste joli sur mobile */
+}
+
+/* Style du Logo dans le footer */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.footer-logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: top center; /* Même astuce que la navbar */
+  border-radius: 50%;
+  border: 2px solid var(--primary-red);
+}
+
+.footer-title-red {
+  color: var(--primary-red);
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.footer-subtitle {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+/* Titres des colonnes (CONTACT, MAP) */
+.footer-section h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  border-left: 3px solid var(--primary-red);
+  padding-left: 10px;
+}
+
+/* Section Contact */
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+.contact-item .icon {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.contact-item p {
+  margin: 0;
+}
+
+.btn-small {
+  margin-top: 15px;
+  padding: 8px 15px;
+  font-size: 0.8rem;
+}
+
+/* Section Map */
+.map-container {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #444;
+}
+
+/* Copyright en bas */
+.footer-bottom {
+  background-color: #000;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #777;
+  border-top: 1px solid #333;
+}
+
+/* Responsive : Sur mobile, on empile tout */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+}
