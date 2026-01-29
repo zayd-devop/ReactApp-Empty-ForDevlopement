@@ -9,7 +9,6 @@ export default function Footer() {
     <footer className="footer-container">
       <div className="footer-content">
         
-        {/* COLONNE 1 : LOGO & DESCRIPTION */}
         <div className="footer-section about">
           <div className="footer-logo">
              <img src={learLogo} alt="Techno Services Logo" className="footer-logo-img" />
@@ -26,7 +25,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* COLONNE 2 : CONTACT (Au milieu comme demandé) */}
         <div className="footer-section contact-info">
           <h4>NOUS CONTACTER</h4>
           <div className="contact-item">
@@ -51,7 +49,6 @@ export default function Footer() {
         <div className="footer-section map-section">
           <h4>NOTRE LOCALISATION</h4>
           <div className="map-container">
-            {/* Iframe Google Maps centrée sur Tanger */}
             <iframe 
               title="Localisation Techno Services"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103630.77943482704!2d-5.898730992384974!3d35.77533866209569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b875cf04c132d%3A0x76bfc571bfb4e17a!2sTanger%2C%20Maroc!5e0!3m2!1sfr!2sma!4v1706112345678!5m2!1sfr!2sma" 
