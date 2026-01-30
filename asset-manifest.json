@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactApp-Empty-ForDevlopement/static/css/main.b73be66b.css",
-    "main.js": "/ReactApp-Empty-ForDevlopement/static/js/main.28e94aec.js",
+    "main.js": "/ReactApp-Empty-ForDevlopement/static/js/main.1f13415d.js",
     "static/media/elastomer.png": "/ReactApp-Empty-ForDevlopement/static/media/elastomer.cbcd65d1e58dbdb0b2a2.png",
     "static/media/acome.png": "/ReactApp-Empty-ForDevlopement/static/media/acome.8143dacce964246dc4c9.png",
     "static/media/yazaki.png": "/ReactApp-Empty-ForDevlopement/static/media/yazaki.82dfb07299b4e32d696a.png",
@@ -10,10 +10,10 @@
     "static/media/erum.png": "/ReactApp-Empty-ForDevlopement/static/media/erum.6e893ffbb3a46d3d90f5.png",
     "index.html": "/ReactApp-Empty-ForDevlopement/index.html",
     "main.b73be66b.css.map": "/ReactApp-Empty-ForDevlopement/static/css/main.b73be66b.css.map",
-    "main.28e94aec.js.map": "/ReactApp-Empty-ForDevlopement/static/js/main.28e94aec.js.map"
+    "main.1f13415d.js.map": "/ReactApp-Empty-ForDevlopement/static/js/main.1f13415d.js.map"
   },
   "entrypoints": [
     "static/css/main.b73be66b.css",
-    "static/js/main.28e94aec.js"
+    "static/js/main.1f13415d.js"
   ]
 }
