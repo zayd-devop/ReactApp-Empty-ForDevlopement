@@ -91,7 +91,7 @@ export const Footer = () => {
             <div className="h-64 rounded-3xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-200/50 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700 group">
               <iframe 
                 title="Localisation Techno Services"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103630.77943482704!2d-5.898730992384974!3d35.77533866209569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b875cf04c132d%3A0x76bfc571bfb4e17a!2sTanger%2C%20Maroc!5e0!3m2!1sfr!2sma!4v1706112345678!5m2!1sfr!2sma" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2467.535831573785!2d-5.903274800000001!3d35.7156012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b889cb0593227%3A0x4e18b00ac4580f5f!2sentr%C3%A9e%20gzenaya%20ZI!5e1!3m2!1sfr!2sma!4v1774542772334!5m2!1sfr!2sma" 
                 width="100%" 
                 height="100%" 
                 style={{border:0}} 
