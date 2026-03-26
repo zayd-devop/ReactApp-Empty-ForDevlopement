@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router';
 import { 
   Zap, 
   ShieldCheck, 
@@ -7,7 +7,8 @@ import {
   MapPin, 
   Wrench,
   Settings,
-  ArrowRight
+  ArrowRight,
+  LeafyGreen
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
@@ -17,6 +18,45 @@ import { Footer } from './components/Footer';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Services } from './components/Services';
+import learLogo from './assets/logos/lear-logo-vector.png';
+import yazakiLogo from './assets/logos/yazaki.png';
+import marelliLogo from './assets/logos/magneti.png'; 
+import coficabLogo from './assets/logos/coficab.png';
+import acomeLogo from './assets/logos/acome.png';
+import erumLogo from './assets/logos/erum.png';
+import elastomerLogo from './assets/logos/elastomer.png';
+import brillasLogo from './assets/logos/brillas.png';
+
+// --- Composant Global de Défilement (NOUVEAU) ---
+// Ce composant "écoute" les changements de route (pathname) 
+// et force le navigateur à scroller en haut à chaque changement.
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null; // Il n'affiche rien visuellement
+};
+
+// --- Interfaces & Données ---
+
+interface Client {
+  name: string;
+  logo: string;
+}
+
+const clients: Client[] = [
+  { name: 'LEAR Corporation', logo: learLogo },
+  { name: 'Yazaki', logo: yazakiLogo },
+  { name: 'Marelli', logo: marelliLogo },
+  { name: 'COFICAB', logo: coficabLogo }, 
+  { name: 'ACOME Group', logo: acomeLogo },
+  { name: 'ERUM Group', logo: erumLogo },
+  { name: 'Elastomer Solutions', logo: elastomerLogo },
+  { name: 'Brillas Agusti', logo: brillasLogo }
+];
 
 // --- Home Component ---
 
@@ -152,10 +192,14 @@ const Home = () => {
       {/* Trust Markers */}
       <section className="py-16 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center opacity-40">
-            {["LEAR", "YAZAKI", "MARELLI", "COFICAB", "ACOME", "ERUM", "ELASTOMER", "BRILLAS"].map((client, idx) => (
-              <div key={idx} className="text-center">
-                <span className="text-sm font-black text-slate-400 uppercase tracking-widest">{client}</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center opacity-40 hover:opacity-100 transition-opacity duration-300">
+            {clients.map((client, idx) => (
+              <div key={idx} className="text-center flex justify-center items-center">
+                <img 
+                  src={client.logo} 
+                  alt={`Logo ${client.name}`} 
+                  className="max-h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                />
               </div>
             ))}
           </div>
@@ -170,6 +214,9 @@ const Home = () => {
 export default function App() {
   return (
     <Router>
+      {/* Ajout du composant ScrollToTop ici pour qu'il s'applique à toute l'app */}
+      <ScrollToTop />
+      
       <div className="min-h-screen bg-white font-sans text-slate-900 flex flex-col">
         <Navbar />
         <main className="flex-grow">

@@ -17,6 +17,14 @@ import { Footer } from './components/Footer';
 import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Services } from './components/Services';
+import learLogo from '../assets/lear-logo-vector.png'
+import yazakiLogo from'../assets/yazaki.png'
+import coficabLogo from'../assets/coficab.png'
+import marelliLogo from '../assets/magneti.png'
+import acomeLogo from '../assets/acome.png'
+import erumLogo from '../assets/erum.png'
+import elastomerLogo from '../assets/elastomer.png'
+import brillasLogo from '../assets/brillas.png'
 
 // --- Home Component ---
 
@@ -153,9 +161,19 @@ const Home = () => {
       <section className="py-16 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center opacity-40">
-            {["LEAR", "YAZAKI", "MARELLI", "COFICAB", "ACOME", "ERUM", "ELASTOMER", "BRILLAS"].map((client, idx) => (
+            {[{ name: 'LEAR Corporation', logo: learLogo },
+    { name: 'Yazaki', logo: yazakiLogo },
+    { name: 'Marelli', logo: marelliLogo },
+    { name: 'COFICAB', logo: coficabLogo }, 
+    { name: 'ACOME Group', logo: acomeLogo },
+    { name: 'ERUM Group', logo: erumLogo },
+    { name: 'Elastomer Solutions', logo: elastomerLogo },
+    { name: 'Brillas Agusti', logo: brillasLogo }].map((client, idx) => (
               <div key={idx} className="text-center">
-                <span className="text-sm font-black text-slate-400 uppercase tracking-widest">{client}</span>
+                <img 
+          src={client.logo} 
+          alt={client.name} 
+        />
               </div>
             ))}
           </div>

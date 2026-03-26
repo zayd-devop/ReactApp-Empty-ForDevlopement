@@ -4,6 +4,15 @@ import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 
 export const Footer = () => {
+
+  // Fonction pour forcer le retour en haut de page lors du clic
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // "smooth" pour un défilement fluide, ou "auto" pour instantané
+    });
+  };
+
   return (
     <footer className="bg-slate-50 border-t border-slate-200 pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +74,7 @@ export const Footer = () => {
               </li>
             </ul>
             <div className="pt-4">
-              <Link to="/contact">
+              <Link to="/contact" onClick={scrollToTop}>
                 <Button className="bg-red-600 hover:bg-red-700 text-white rounded-xl px-8 py-6 h-auto font-black uppercase text-xs tracking-widest shadow-lg shadow-red-100 border-none transition-all">
                   Demander un devis
                 </Button>
